@@ -7,7 +7,7 @@ const setDefault = (teamList) => {
   return arr;
 };
 
-function Matches({ teamList }) {
+function Matches({ teamList, side }) {
   // console.log("Bap", teamList);
   const [winningTeams, setWinningTeams] = useState(() => setDefault(teamList));
 
@@ -43,23 +43,46 @@ function Matches({ teamList }) {
       }, Math.floor(Math.random() * 7000) + 5000);
     }
   }, [teamList]);
+
   const check = () => {
     const nullArr = teamList.filter((ele) => ele === null);
     return nullArr.length === 0;
   };
+
   useEffect(() => {
     if (teamList.length === 1) return;
     //console.log("Winning Teams", winningTeams);
   }, [winningTeams]);
   if (teamList.length === 1) return null;
   return (
-    <div style={{ display: "flex", marginRight: "100px" }}>
-      <div>
-        {teamList.map((team) => (
-          <p>{team ? team.teamName : "Yet to be decided"}</p>
-        ))}
-      </div>
-      <div>{teamList.length > 0 && <Matches teamList={winningTeams} />}</div>
+    <div>
+      {side ? (
+        <div style={{ display: "flex", marginLeft: "60px" }}>
+          <div>
+            {teamList.map((team) => (
+              <p>{team ? team.teamName : "Yet to be decided"}</p>
+            ))}
+          </div>
+          <div>
+            {teamList.length > 0 && (
+              <Matches teamList={winningTeams} side={side} />
+            )}
+          </div>
+        </div>
+      ) : (
+        <div style={{ display: "flex", marginRight: "60px" }}>
+          <div>
+            {teamList.length > 0 && (
+              <Matches teamList={winningTeams} side={side} />
+            )}
+          </div>
+          <div>
+            {teamList.map((team) => (
+              <p>{team ? team.teamName : "Yet to be decided"}</p>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

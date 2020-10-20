@@ -229,11 +229,28 @@ function App() {
       location: "Washington",
     },
   ]);
+  const [teamList1, setTeamlist1] = useState(() => {
+    let arr = [];
+    for (let index = 0; index < teamList.length / 2; index++)
+      arr.push(teamList[index]);
+    return arr;
+  });
+  const [teamList2, setTeamlist2] = useState(() => {
+    let arr = [];
+    for (let index = teamList.length / 2; index < teamList.length; index++)
+      arr.push(teamList[index]);
+    return arr;
+  });
 
   return (
-    <>
-      <Matches teamList={teamList} />
-    </>
+    <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <div>
+        <Matches teamList={teamList1} side={true}/>
+      </div>
+      <div>
+        <Matches teamList={teamList2} side={false}/>
+      </div>
+    </div>
   );
 }
 
