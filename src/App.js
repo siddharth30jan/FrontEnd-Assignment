@@ -244,17 +244,28 @@ function App() {
   });
   const [finalist, setFinalist] = useState([]);
 
+  const [topMargin, setTopMargin] = useState(0);
   /* useEffect(() => {
     console.log("finalist", finalist);
   }, [finalist]);*/
   return (
-    <div style={{ display: "flex", justifyContent: "space-between" }}>
+    <div style={{ display: "flex", width: "90%", margin: "auto" }}>
       <div>
-        <Matches teamList={teamList1} side={true} setFinalist={setFinalist} />
+        <Matches
+          teamList={teamList1}
+          side={true}
+          setFinalist={setFinalist}
+          topMargin={topMargin}
+        />
       </div>
       <div>{finalist.length === 4 && <Result finalist={finalist} />}</div>
       <div>
-        <Matches teamList={teamList2} side={false} setFinalist={setFinalist} />
+        <Matches
+          teamList={teamList2}
+          side={false}
+          setFinalist={setFinalist}
+          topMargin={topMargin}
+        />
       </div>
     </div>
   );

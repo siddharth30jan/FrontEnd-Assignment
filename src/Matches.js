@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./Matches.css";
 
 const setDefault = (teamList) => {
   if (teamList.length == 1) return [];
@@ -7,7 +8,7 @@ const setDefault = (teamList) => {
   return arr;
 };
 
-function Matches({ teamList, side, setFinalist }) {
+function Matches({ teamList, side, setFinalist, topMargin }) {
   // console.log("Bap", teamList);
   const [winningTeams, setWinningTeams] = useState(() => setDefault(teamList));
 
@@ -59,44 +60,65 @@ function Matches({ teamList, side, setFinalist }) {
     if (teamList.length === 1) return;
     //console.log("Winning Teams", winningTeams);
   }, [winningTeams]);
+
+  const showLevel = () => {
+    if (teamList.length === 4) return "Quaterfinal";
+    if (teamList.length === 2) return "Semifinal";
+    return `Round of ${teamList.length * 2}`;
+  };
   if (teamList.length === 1) return null;
   return (
-    <div>
-      {side ? (
-        <div style={{ display: "flex", marginLeft: "60px" }}>
-          <div>
-            {teamList.map((team) => (
-              <p>{team ? team.teamName : "Yet to be decided"}</p>
-            ))}
+    <div
+      className="container"
+      style={{
+        marginTop: topMargin,
+      }}
+    >
+      <div>
+        {side ? (
+          <div className="outerBoxLeft">
+            <div>
+              <h5>{showLevel()}</h5>
+              {teamList.map((team) => (
+                <div className="block">
+                  <p>{team ? team.teamName : "Yet to be decided"}</p>
+                </div>
+              ))}
+            </div>
+            <div>
+              {teamList.length > 0 && (
+                <Matches
+                  teamList={winningTeams}
+                  side={side}
+                  setFinalist={setFinalist}
+                  topMargin={topMargin + 50}
+                />
+              )}
+            </div>
           </div>
-          <div>
-            {teamList.length > 0 && (
-              <Matches
-                teamList={winningTeams}
-                side={side}
-                setFinalist={setFinalist}
-              />
-            )}
+        ) : (
+          <div className="outerBoxRight">
+            <div>
+              {teamList.length > 0 && (
+                <Matches
+                  teamList={winningTeams}
+                  side={side}
+                  setFinalist={setFinalist}
+                  topMargin={topMargin + 50}
+                />
+              )}
+            </div>
+            <div>
+              <h5>{showLevel()}</h5>
+              {teamList.map((team) => (
+                <div className="block">
+                  <p>{team ? team.teamName : "Yet to be decided"}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      ) : (
-        <div style={{ display: "flex", marginRight: "60px" }}>
-          <div>
-            {teamList.length > 0 && (
-              <Matches
-                teamList={winningTeams}
-                side={side}
-                setFinalist={setFinalist}
-              />
-            )}
-          </div>
-          <div>
-            {teamList.map((team) => (
-              <p>{team ? team.teamName : "Yet to be decided"}</p>
-            ))}
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
