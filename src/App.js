@@ -250,7 +250,7 @@ function App() {
   }, [finalist]);*/
   return (
     <div style={{ display: "flex", width: "90%", margin: "auto" }}>
-      <div>
+      <div style={{ flex: "2" }}>
         <Matches
           teamList={teamList1}
           side={true}
@@ -258,8 +258,10 @@ function App() {
           topMargin={topMargin}
         />
       </div>
-      <div>{finalist.length === 4 && <Result finalist={finalist} />}</div>
-      <div>
+      <div style={{ flex: "1", height: "00px" }}>
+        {/*finalist.length === 4 &&*/ <Result finalist={finalist} />}
+      </div>
+      <div style={{ flex: "2" }}>
         <Matches
           teamList={teamList2}
           side={false}
