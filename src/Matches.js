@@ -7,7 +7,7 @@ const setDefault = (teamList) => {
   return arr;
 };
 
-function Matches({ teamList, side }) {
+function Matches({ teamList, side, setFinalist }) {
   // console.log("Bap", teamList);
   const [winningTeams, setWinningTeams] = useState(() => setDefault(teamList));
 
@@ -15,7 +15,13 @@ function Matches({ teamList, side }) {
     //Extract out the winning teams
     if (teamList.length == 1) return;
     if (!check()) return;
-
+    if (teamList.length == 2) {
+      //semi-finalist
+      console.log(setFinalist);
+      setFinalist((prev) => {
+        return [...prev, ...teamList];
+      });
+    }
     for (let no = 0; no < teamList.length; no += 2) {
       // if (teamList[no] === null || teamList[no + 1] === null) continue;
       setTimeout(() => {
@@ -65,7 +71,11 @@ function Matches({ teamList, side }) {
           </div>
           <div>
             {teamList.length > 0 && (
-              <Matches teamList={winningTeams} side={side} />
+              <Matches
+                teamList={winningTeams}
+                side={side}
+                setFinalist={setFinalist}
+              />
             )}
           </div>
         </div>
@@ -73,7 +83,11 @@ function Matches({ teamList, side }) {
         <div style={{ display: "flex", marginRight: "60px" }}>
           <div>
             {teamList.length > 0 && (
-              <Matches teamList={winningTeams} side={side} />
+              <Matches
+                teamList={winningTeams}
+                side={side}
+                setFinalist={setFinalist}
+              />
             )}
           </div>
           <div>

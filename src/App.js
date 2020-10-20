@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Matches from "./Matches";
+import Result from "./Result";
 import "./App.css";
 
 function App() {
@@ -241,14 +242,19 @@ function App() {
       arr.push(teamList[index]);
     return arr;
   });
+  const [finalist, setFinalist] = useState([]);
 
+  /* useEffect(() => {
+    console.log("finalist", finalist);
+  }, [finalist]);*/
   return (
     <div style={{ display: "flex", justifyContent: "space-between" }}>
       <div>
-        <Matches teamList={teamList1} side={true}/>
+        <Matches teamList={teamList1} side={true} setFinalist={setFinalist} />
       </div>
+      <div>{finalist.length === 4 && <Result finalist={finalist} />}</div>
       <div>
-        <Matches teamList={teamList2} side={false}/>
+        <Matches teamList={teamList2} side={false} setFinalist={setFinalist} />
       </div>
     </div>
   );
