@@ -23,3 +23,12 @@
   padding: 20px;
   font-size: smaller;
 }
+.buttonC {
+  width: 300px;
+  margin: 20px;
+  cursor: pointer;
+  padding: 10px;
+  border: lightseagreen 2px solid;
+  background-color: lightsalmon;
+  font-size: large;
+}

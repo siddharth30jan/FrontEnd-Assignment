@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Matches from "./components/matches";
 import Result from "./components/result";
 import JsonInput from "./components/jsonInput";
+import Twoplayers from "./components/twoPlayers";
 import "./App.css";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
   const [teamList2, setTeamlist2] = useState("");
   const [finalist, setFinalist] = useState([]);
   const [topMargin, setTopMargin] = useState(0);
+  const [double, setDouble] = useState(false);
 
   // Considers the teamList array and splits it into 2 equal halves
   const splitArray = () => {
@@ -25,10 +27,13 @@ function App() {
 
   useEffect(() => {
     if (!teamList) return;
-    splitArray();
+    if (teamList.length === 2) setDouble(true);
+    else splitArray();
   }, [teamList]);
 
-  return teamList1 && teamList2 ? (
+  return double ? (
+    <Twoplayers teamList={teamList} setDouble={setDouble}/>
+  ) : teamList1 && teamList2 ? (
     <div className="container">
       <div className="box1">
         <Matches
@@ -39,7 +44,7 @@ function App() {
         />
       </div>
       <div className="box2">
-        <Result finalist={finalist} />
+        <Result finalist={finalist} setTeamlist1={setTeamlist1} />
       </div>
       <div className="box3">
         <Matches

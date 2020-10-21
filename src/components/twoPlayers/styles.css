@@ -1,0 +1,65 @@
+.container2 {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: auto;
+  display: flex;
+}
+.block2 {
+  width: 80px;
+  height: 70px;
+  font-size: smaller;
+  border: 2px solid black;
+  text-align: center;
+  margin-top: 15px;
+  margin-left: 10px;
+}
+.boxx2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  padding: 10px;
+}
+.outerBoxLeft2 {
+  width: 100%;
+  display: flex;
+}
+.outerBoxRight2 {
+  width: 100%;
+  display: flex;
+}
+.wrapper2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: lightsalmon;
+}
+.img2 {
+  width: 100%;
+  height: 80px;
+  object-fit: contain;
+  margin: auto;
+}
+.buttonC2 {
+  width: 300px;
+  margin: 20px;
+  cursor: pointer;
+  padding: 10px;
+  border: lightseagreen 2px solid;
+  background-color: lightsalmon;
+  font-size: large;
+}
+.outerBox2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 90%;
+  margin: auto;
+  padding: 20px;
+  font-size: smaller;
+  background-color: orange;
+}

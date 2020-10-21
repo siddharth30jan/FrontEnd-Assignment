@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Teamtemplate from "../Teamtemplate";
 import "./styles.css";
 
 // Creates the intended array for the next level and initializes every value to null
@@ -20,9 +21,10 @@ function Matches({ teamList, side, setFinalist, topMargin }) {
         return [...prev, ...teamList];
       });
     }
+    let id;
     //Extract out the winning teams
     for (let no = 0; no < teamList.length; no += 2) {
-      setTimeout(() => {
+      id = setTimeout(() => {
         setWinningTeams((prevState) => {
           const winner = Math.random() < 0.5 ? teamList[no] : teamList[no + 1];
           //Extract out the indices pointing to null and then choose a random one from them to allocate the winner's match for the next level
@@ -42,6 +44,9 @@ function Matches({ teamList, side, setFinalist, topMargin }) {
         });
       }, Math.floor(Math.random() * 7000) + 5000); //Random value between 5 secs to 10 secs for time allotment of a match
     }
+    return () => {
+      while (id--) clearTimeout(id);
+    };
   }, [teamList]);
 
   // Enables a check whether we are done with all the matches of the current level
@@ -71,9 +76,7 @@ function Matches({ teamList, side, setFinalist, topMargin }) {
             <div className="wrapper">
               <h5>{showLevel()}</h5>
               {teamList.map((team) => (
-                <div className="block" key={Math.random()}>
-                  <p>{team ? team.teamName : "Yet to be decided"}</p>
-                </div>
+                <Teamtemplate team={team} key={Math.random()} />
               ))}
             </div>
             <div>

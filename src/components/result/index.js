@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 
-function Result({ finalist }) {
+function Result({ finalist, setTeamlist1 }) {
   const [first, setFirst] = useState("");
   const [second, setSecond] = useState("");
   const [third, setThird] = useState("");
@@ -9,21 +9,29 @@ function Result({ finalist }) {
 
   useEffect(() => {
     // Determine the winners
+    let id;
     if (!finalist[0] || !finalist[1] || !finalist[2] || !finalist[3]) return;
-    setTimeout(() => {
+    id = setTimeout(() => {
       let winner = Math.random() < 0.5 ? finalist[0] : finalist[3];
       setThird(winner);
       setFourth(winner === finalist[0] ? finalist[3] : finalist[0]);
-      setTimeout(() => {
+      id = setTimeout(() => {
         let winner = Math.random() < 0.5 ? finalist[1] : finalist[2];
         setFirst(winner);
         setSecond(winner === finalist[1] ? finalist[2] : finalist[1]);
       }, Math.floor(Math.random() * 7000) + 5000);
     }, Math.floor(Math.random() * 7000) + 5000);
+
+    return () => {
+      while (id--) clearTimeout(id);
+    };
   }, [finalist]);
 
   return (
     <div className="outerBox">
+      <button className="buttonC" onClick={(e) => setTeamlist1("")}>
+        Upload another file
+      </button>
       <div>
         <img
           src="https://img.favpng.com/23/17/21/2014-fifa-world-cup-brazil-football-player-png-favpng-E8nyFDyxnSCEfCKdBs0ezq4ML.jpg"

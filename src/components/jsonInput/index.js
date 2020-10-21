@@ -3,12 +3,17 @@ import "./styles.css";
 import data from "../../data.json";
 
 function JsonInput({ setTeamlist }) {
+  function powerOf2(v) {
+    return v && !(v & (v - 1));
+  }
+
   const saveFile = (e) => {
     let reader = new FileReader();
 
     reader.onload = function (e) {
       let jsonObj = JSON.parse(e.target.result);
       //console.log(jsonObj);
+      if (!powerOf2(jsonObj.length)) return;
       setTeamlist(jsonObj);
     };
 
@@ -16,10 +21,11 @@ function JsonInput({ setTeamlist }) {
   };
   const setDefault = (e) => {
     e.preventDefault();
-    setTeamlist(data);
+    setTeamlist([...data]);
   };
   return (
     <div className="outerContainer">
+    <div></div>
       <div className="containerJ">
         <h1>Please enter the JSON</h1>
         <p>
