@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./matches.css";
+import "./styles.css";
 
+// Creates the intended array for the next level and initializes every value to null
 const setDefault = (teamList) => {
   if (teamList.length == 1) return [];
   const arr = new Array(teamList.length / 2);
@@ -9,64 +10,54 @@ const setDefault = (teamList) => {
 };
 
 function Matches({ teamList, side, setFinalist, topMargin }) {
-  // console.log("Bap", teamList);
   const [winningTeams, setWinningTeams] = useState(() => setDefault(teamList));
 
   useEffect(() => {
-    //Extract out the winning teams
-    if (teamList.length == 1) return;
     if (!check()) return;
     if (teamList.length == 2) {
-      //semi-finalist
-      console.log(setFinalist);
+      //sets the semi-finalists
       setFinalist((prev) => {
         return [...prev, ...teamList];
       });
     }
+    //Extract out the winning teams
     for (let no = 0; no < teamList.length; no += 2) {
-      // if (teamList[no] === null || teamList[no + 1] === null) continue;
       setTimeout(() => {
-        // console.log("calledddd");
-        setWinningTeams((prev) => {
-          let winner = Math.random() < 0.5 ? teamList[no] : teamList[no + 1];
-          //Extract out the indices pointing to null and then choose a random one from them
+        setWinningTeams((prevState) => {
+          const winner = Math.random() < 0.5 ? teamList[no] : teamList[no + 1];
+          //Extract out the indices pointing to null and then choose a random one from them to allocate the winner's match for the next level
           const possibleCandidates = [];
-          for (let index = 0; index < prev.length; index++) {
-            if (prev[index] === null) possibleCandidates.push(index);
+          for (let index = 0; index < prevState.length; index++) {
+            if (prevState[index] === null) possibleCandidates.push(index);
           }
-          //console.log()
+
           const randomIndex =
             possibleCandidates[
               Math.floor(Math.random() * possibleCandidates.length)
             ];
-          // console.log("ran", randomIndex);
-          let copy = [...prev];
-          //console.log("Wi", winner);
-          copy[randomIndex] = winner;
-          // console.log("temp", temp);
-          return copy;
+
+          const tempState = [...prevState];
+          tempState[randomIndex] = winner;
+          return tempState;
         });
-        //console.log(Math.floor(Math.random() * 7000) + 5000);
-      }, Math.floor(Math.random() * 7000) + 5000);
+      }, Math.floor(Math.random() * 7000) + 5000); //Random value between 5 secs to 10 secs for time allotment of a match
     }
   }, [teamList]);
 
+  // Enables a check whether we are done with all the matches of the current level
   const check = () => {
     const nullArr = teamList.filter((ele) => ele === null);
     return nullArr.length === 0;
   };
 
-  useEffect(() => {
-    if (teamList.length === 1) return;
-    //console.log("Winning Teams", winningTeams);
-  }, [winningTeams]);
-
+  // Determines the data to be displayed according to the level
   const showLevel = () => {
     if (teamList.length === 4) return "Quaterfinal";
     if (teamList.length === 2) return "Semifinal";
     return `Round of ${teamList.length * 2}`;
   };
-  if (teamList.length === 1) return null;
+
+  if (teamList.length === 1) return null; // Base case for the recursive calls
   return (
     <div
       className="container"
@@ -80,7 +71,7 @@ function Matches({ teamList, side, setFinalist, topMargin }) {
             <div className="wrapper">
               <h5>{showLevel()}</h5>
               {teamList.map((team) => (
-                <div className="block">
+                <div className="block" key={Math.random()}>
                   <p>{team ? team.teamName : "Yet to be decided"}</p>
                 </div>
               ))}
@@ -111,7 +102,7 @@ function Matches({ teamList, side, setFinalist, topMargin }) {
             <div className="wrapper">
               <h5>{showLevel()}</h5>
               {teamList.map((team) => (
-                <div className="block">
+                <div className="block" key={Math.random()}>
                   <p>{team ? team.teamName : "Yet to be decided"}</p>
                 </div>
               ))}
