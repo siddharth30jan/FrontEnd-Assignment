@@ -22,7 +22,7 @@ function Result({ finalist }) {
     <div className="outerBox">
       <div>
         <img
-          src="https://img.fifa.com/image/upload/t_tc1/zzbuqee2npvdmzi4m1dy.jpg"
+          src="https://img.favpng.com/23/17/21/2014-fifa-world-cup-brazil-football-player-png-favpng-E8nyFDyxnSCEfCKdBs0ezq4ML.jpg"
           alt="Image"
           className="img"
         />
