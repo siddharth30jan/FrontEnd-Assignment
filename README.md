@@ -1,5 +1,5 @@
 
-## Running the Program
+## Running the Application
 
 * install the dependencies
 ```
