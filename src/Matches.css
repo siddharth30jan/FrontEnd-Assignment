@@ -10,15 +10,20 @@
   border: 2px solid black;
   text-align: center;
   margin-top: 15px;
+  margin-left: 10px;
 }
 
 .outerBoxLeft {
   width: 100%;
   display: flex;
-  margin-left: 40px;
 }
 .outerBoxRight {
   width: 100%;
   display: flex;
-  margin-right: 40px;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

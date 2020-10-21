@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Matches.css";
+import "./matches.css";
 
 const setDefault = (teamList) => {
   if (teamList.length == 1) return [];
@@ -77,7 +77,7 @@ function Matches({ teamList, side, setFinalist, topMargin }) {
       <div>
         {side ? (
           <div className="outerBoxLeft">
-            <div>
+            <div className="wrapper">
               <h5>{showLevel()}</h5>
               {teamList.map((team) => (
                 <div className="block">
@@ -108,7 +108,7 @@ function Matches({ teamList, side, setFinalist, topMargin }) {
                 />
               )}
             </div>
-            <div>
+            <div className="wrapper">
               <h5>{showLevel()}</h5>
               {teamList.map((team) => (
                 <div className="block">

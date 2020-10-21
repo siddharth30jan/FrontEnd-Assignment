@@ -15,8 +15,8 @@ function Result({ finalist }) {
         let winner = Math.random() < 0.5 ? finalist[1] : finalist[2];
         setFirst(winner);
         setSecond(winner === finalist[1] ? finalist[2] : finalist[1]);
-      }, 5000);
-    }, 5000);
+      }, Math.floor(Math.random() * 7000) + 5000);
+    }, Math.floor(Math.random() * 7000) + 5000);
   }, [finalist]);
   return (
     <div className="outerBox">

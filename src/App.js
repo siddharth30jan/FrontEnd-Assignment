@@ -29,7 +29,7 @@ function App() {
 
   return teamList1 && teamList2 ? (
     <div style={{ display: "flex", width: "90%", margin: "auto" }}>
-      <div style={{ flex: "2" }}>
+      <div style={{ flex: "1", backgroundColor: "red" }}>
         <Matches
           teamList={teamList1}
           side={true}
@@ -37,10 +37,23 @@ function App() {
           topMargin={topMargin}
         />
       </div>
-      <div style={{ flex: "1", height: "00px" }}>
+      <div
+        style={{
+          flex: "2",
+          backgroundColor: "blue",
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+        }}
+      >
         {/*finalist.length === 4 &&*/ <Result finalist={finalist} />}
       </div>
-      <div style={{ flex: "2" }}>
+      <div
+        style={{
+          flex: "1",
+          backgroundColor: "pink"
+        }}
+      >
         <Matches
           teamList={teamList2}
           side={false}
