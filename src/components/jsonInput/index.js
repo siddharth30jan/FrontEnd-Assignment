@@ -25,12 +25,12 @@ function JsonInput({ setTeamlist }) {
   };
   return (
     <div className="outerContainer">
-    <div></div>
+      <div></div>
       <div className="containerJ">
         <h1>Please enter the JSON</h1>
         <p>
           (The program assumes that the JSON file has number of entries in power
-          of 2)
+          of 2 and greater than 1 to proceed)
         </p>
 
         <input type="file" onChange={saveFile} />
