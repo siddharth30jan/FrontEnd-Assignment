@@ -76,7 +76,9 @@ function Matches({ teamList, side, setFinalist, topMargin }) {
               <h5>{showLevel()}</h5>
               {teamList.map((team) => (
                 <div className="block" key={Math.random()}>
-                  <p>{team ? team.teamName : "Yet to be decided"}</p>
+                  <p className={team ? "whiteFont" : ""}>
+                    {team ? team.teamName : "Yet to be decided"}
+                  </p>
                 </div>
               ))}
             </div>
@@ -107,7 +109,9 @@ function Matches({ teamList, side, setFinalist, topMargin }) {
               <h5>{showLevel()}</h5>
               {teamList.map((team) => (
                 <div className="block" key={Math.random()}>
-                  <p>{team ? team.teamName : "Yet to be decided"}</p>
+                  <p className={team ? "whiteFont" : ""}>
+                    {team ? team.teamName : "Yet to be decided"}
+                  </p>
                 </div>
               ))}
             </div>

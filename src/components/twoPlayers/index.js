@@ -5,7 +5,7 @@ function Twoplayers({ teamList, setDouble }) {
   const [first, setFirst] = useState("");
   const [second, setSecond] = useState("");
   const [toggle, setToggle] = useState(false);
-  console.log(teamList);
+  
   let id;
   useEffect(() => {
     id = setTimeout(() => {
