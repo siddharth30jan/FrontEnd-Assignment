@@ -17,8 +17,8 @@ npm start
 * [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - Programming Language
 * [npm](https://www.npmjs.com/) - Package manager for javascript
 
+![Screenshot (1556)](https://user-images.githubusercontent.com/40563397/96845629-837e9080-146e-11eb-8c3d-0bbdad90a226.png)
+![Screenshot (1563)](https://user-images.githubusercontent.com/40563397/96845669-8f6a5280-146e-11eb-9299-9e286aa22df1.png)
+![Screenshot (1564)](https://user-images.githubusercontent.com/40563397/96845677-91ccac80-146e-11eb-99b1-c742df6b39bf.png)
+![Screenshot (1566)](https://user-images.githubusercontent.com/40563397/96845684-942f0680-146e-11eb-98a4-74bc8e70032f.png)
 
-![Screenshot (1556)](https://user-images.githubusercontent.com/40563397/96839829-511d6500-1467-11eb-9d15-ff93986340af.png)
-![Screenshot (1557)](https://user-images.githubusercontent.com/40563397/96839837-54b0ec00-1467-11eb-8638-df89975d8208.png)
-![Screenshot (1558)](https://user-images.githubusercontent.com/40563397/96839853-58447300-1467-11eb-9c22-d747214e1dca.png)
-![Screenshot (1559)](https://user-images.githubusercontent.com/40563397/96839876-61cddb00-1467-11eb-8368-0b0f749de0c1.png)
