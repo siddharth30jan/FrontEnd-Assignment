@@ -1,30 +1,48 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 
-function Result({ finalist, setTeamlist1 }) {
+function Result({ finalist, setTeamlist1, setFinalist }) {
   const [first, setFirst] = useState("");
   const [second, setSecond] = useState("");
   const [third, setThird] = useState("");
   const [fourth, setFourth] = useState("");
   const [toggle, setToggle] = useState(false);
 
+  //Container for storing setTimeout ids
+  let ids = [];
   useEffect(() => {
     // Determine the winners
-    let id;
-    if (!finalist[0] || !finalist[1] || !finalist[2] || !finalist[3]) return;
-    id = setTimeout(() => {
-      let winner = Math.random() < 0.5 ? finalist[0] : finalist[3];
-      setThird(winner);
-      setFourth(winner === finalist[0] ? finalist[3] : finalist[0]);
-      id = setTimeout(() => {
-        let winner = Math.random() < 0.5 ? finalist[1] : finalist[2];
-        setFirst(winner);
-        setSecond(winner === finalist[1] ? finalist[2] : finalist[1]);
-      }, Math.floor(Math.random() * 7000) + 5000);
-    }, Math.floor(Math.random() * 7000) + 5000);
+    if (
+      !finalist[0] ||
+      !finalist[1] ||
+      !finalist[2] ||
+      !finalist[3] ||
+      ids.length === 2
+    )
+      return;
+
+    ids.push(
+      setTimeout(() => {
+        let winner = Math.random() < 0.5 ? finalist[0] : finalist[3];
+        setThird(winner);
+        setFourth(winner === finalist[0] ? finalist[3] : finalist[0]);
+        ids.push(
+          setTimeout(() => {
+            let winner = Math.random() < 0.5 ? finalist[1] : finalist[2];
+            setFirst(winner);
+            setSecond(winner === finalist[1] ? finalist[2] : finalist[1]);
+          }, Math.floor(Math.random() * 7000) + 5000)
+        );
+      }, Math.floor(Math.random() * 7000) + 5000)
+    );
 
     return () => {
-      while (id--) clearTimeout(id);
+      // Clearing the setTimeouts in the clean up function
+      ids.forEach((element) => {
+        clearTimeout(element);
+      });
+      setFinalist([]);
+      ids = [];
     };
   }, [finalist]);
 

@@ -32,7 +32,7 @@ function App() {
   }, [teamList]);
 
   return double ? (
-    <Twoplayers teamList={teamList} setDouble={setDouble}/>
+    <Twoplayers teamList={teamList} setDouble={setDouble} />
   ) : teamList1 && teamList2 ? (
     <div className="container">
       <div className="box1">
@@ -44,7 +44,11 @@ function App() {
         />
       </div>
       <div className="box2">
-        <Result finalist={finalist} setTeamlist1={setTeamlist1} />
+        <Result
+          finalist={finalist}
+          setTeamlist1={setTeamlist1}
+          setFinalist={setFinalist}
+        />
       </div>
       <div className="box3">
         <Matches

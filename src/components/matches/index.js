@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Teamtemplate from "../Teamtemplate";
 import "./styles.css";
 
 // Creates the intended array for the next level and initializes every value to null
 const setDefault = (teamList) => {
-  if (teamList.length == 1) return [];
+  if (teamList.length === 1) return [];
   const arr = new Array(teamList.length / 2);
   arr.fill(null);
   return arr;
@@ -12,16 +11,16 @@ const setDefault = (teamList) => {
 
 function Matches({ teamList, side, setFinalist, topMargin }) {
   const [winningTeams, setWinningTeams] = useState(() => setDefault(teamList));
-
+  let id;
   useEffect(() => {
     if (!check()) return;
-    if (teamList.length == 2) {
+
+    if (teamList.length === 2) {
       //sets the semi-finalists
       setFinalist((prev) => {
         return [...prev, ...teamList];
       });
     }
-    let id;
     //Extract out the winning teams
     for (let no = 0; no < teamList.length; no += 2) {
       id = setTimeout(() => {
@@ -76,7 +75,9 @@ function Matches({ teamList, side, setFinalist, topMargin }) {
             <div className="wrapper">
               <h5>{showLevel()}</h5>
               {teamList.map((team) => (
-                <Teamtemplate team={team} key={Math.random()} />
+                <div className="block" key={Math.random()}>
+                  <p>{team ? team.teamName : "Yet to be decided"}</p>
+                </div>
               ))}
             </div>
             <div>
