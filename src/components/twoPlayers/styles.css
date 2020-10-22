@@ -63,3 +63,27 @@
   font-size: smaller;
   background-color: orange;
 }
+.alertE {
+  position: absolute;
+  width: 60%;
+  background-color: orangered;
+  height: 350px;
+  margin-left: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonE {
+  width: 150px;
+  margin: 20px;
+  cursor: pointer;
+  padding: 10px;
+  border: lightseagreen 2px solid;
+  background-color: lightsalmon;
+  font-size: large;
+}
+.buttonE:hover {
+  width: 180px;
+}

@@ -25,7 +25,6 @@ function JsonInput({ setTeamlist }) {
   };
   return (
     <div className="outerContainer">
-      <div></div>
       <div className="containerJ">
         <h1>Please enter the JSON</h1>
         <p>

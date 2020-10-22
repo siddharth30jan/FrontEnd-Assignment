@@ -6,6 +6,7 @@ function Result({ finalist, setTeamlist1 }) {
   const [second, setSecond] = useState("");
   const [third, setThird] = useState("");
   const [fourth, setFourth] = useState("");
+  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
     // Determine the winners
@@ -29,7 +30,34 @@ function Result({ finalist, setTeamlist1 }) {
 
   return (
     <div className="outerBox">
-      <button className="buttonC" onClick={(e) => setTeamlist1("")}>
+      {toggle && (
+        <div className="alert">
+          <h2>Are you sure you want to terminate the current game play?</h2>
+          <button
+            className="buttonD"
+            onClick={(e) => {
+              setTeamlist1("");
+              setToggle(false);
+            }}
+          >
+            YES
+          </button>
+          <button
+            className="buttonD"
+            onClick={(e) => {
+              setToggle(false);
+            }}
+          >
+            NO
+          </button>
+        </div>
+      )}
+      <button
+        className="buttonC"
+        onClick={(e) => {
+          setToggle(true);
+        }}
+      >
         Upload another file
       </button>
       <div>

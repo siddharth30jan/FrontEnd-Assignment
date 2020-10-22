@@ -32,3 +32,28 @@
   background-color: lightsalmon;
   font-size: large;
 }
+.alert {
+  width: 60%;
+  background-color: orangered;
+  height: 350px;
+  position: absolute;
+  top: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonD {
+  width: 150px;
+  margin: 20px;
+  cursor: pointer;
+  padding: 10px;
+  border: lightseagreen 2px solid;
+  background-color: lightsalmon;
+  font-size: large;
+}
+.buttonD:hover {
+  width: 180px;
+}

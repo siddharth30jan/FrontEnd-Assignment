@@ -4,6 +4,7 @@ import "./styles.css";
 function Twoplayers({ teamList, setDouble }) {
   const [first, setFirst] = useState("");
   const [second, setSecond] = useState("");
+  const [toggle, setToggle] = useState(false);
   console.log(teamList);
   let id;
   useEffect(() => {
@@ -18,13 +19,35 @@ function Twoplayers({ teamList, setDouble }) {
   }, []);
   return (
     <div className="container2">
+      {toggle && (
+        <div className="alertE">
+          <h2>Are you sure you want to terminate the current game play?</h2>
+          <button
+            className="buttonE"
+            onClick={(e) => {
+              setDouble(false);
+              setToggle(false);
+            }}
+          >
+            YES
+          </button>
+          <button
+            className="buttonE"
+            onClick={(e) => {
+              setToggle(false);
+            }}
+          >
+            NO
+          </button>
+        </div>
+      )}
       <div className="wrapper2" style={{ flex: "2" }}>
         <div className="block2" key={Math.random()}>
           <p>{teamList[0].teamName}</p>
         </div>
       </div>
       <div className="outerBox2" style={{ flex: "1" }}>
-        <button className="buttonC2" onClick={(e) => setDouble(false)}>
+        <button className="buttonC2" onClick={(e) => setToggle(true)}>
           Upload another file
         </button>
         <div>
